@@ -2,6 +2,8 @@
 
 <br>
 
+![image](https://github.com/vaha-b/FastAPI-scholar/assets/55129308/ee6f17e9-d8ea-4bbd-a3d4-c716f8f461fe)
+
 This repository is a structure from a real-world application and the one I used to work on in RUNIT. This application performs basic CRUD operations over users and harvested data(authors and papers/articles) from Semantic Scholar website stored in a PostgreSQL database. The application is built with [FastAPI](https://fastapi.tiangolo.com/) and [Docker](https://www.docker.com/).
 
 This template utilizes the following tech stacks:
