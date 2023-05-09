@@ -8,7 +8,9 @@ ROOT_DIR: pathlib.Path = pathlib.Path(__file__).parent.parent.parent.parent.pare
 
 
 class BackendBaseSettings(pydantic.BaseSettings):
-    TITLE: str = "DAPSQL FARN-Stack Template Application"
+    
+    # FastAPI
+    TITLE: str = "FastAPI Semantic Scholar Harvester"
     VERSION: str = "0.1.0"
     TIMEZONE: str = "UTC"
     DESCRIPTION: str | None = None
@@ -22,7 +24,8 @@ class BackendBaseSettings(pydantic.BaseSettings):
     OPENAPI_URL: str = "/openapi.json"
     REDOC_URL: str = "/redoc"
     OPENAPI_PREFIX: str = ""
-
+        
+    # DB
     DB_POSTGRES_HOST: str = decouple.config("POSTGRES_HOST", cast=str)  # type: ignore
     DB_MAX_POOL_CON: int = decouple.config("DB_MAX_POOL_CON", cast=int)  # type: ignore
     DB_POSTGRES_NAME: str = decouple.config("POSTGRES_DB", cast=str)  # type: ignore
@@ -38,6 +41,7 @@ class BackendBaseSettings(pydantic.BaseSettings):
     IS_DB_FORCE_ROLLBACK: bool = decouple.config("IS_DB_FORCE_ROLLBACK", cast=bool)  # type: ignore
     IS_DB_EXPIRE_ON_COMMIT: bool = decouple.config("IS_DB_EXPIRE_ON_COMMIT", cast=bool)  # type: ignore
 
+    # Security
     API_TOKEN: str = decouple.config("API_TOKEN", cast=str)  # type: ignore
     AUTH_TOKEN: str = decouple.config("AUTH_TOKEN", cast=str)  # type: ignore
     JWT_TOKEN_PREFIX: str = decouple.config("JWT_TOKEN_PREFIX", cast=str)  # type: ignore

@@ -1,35 +1,12 @@
-<h1 align=center><strong>FastAPI Backend Application Template</strong></h1>
-
-<div align=center>
- <a href="https://github.com/Aeternalis-Ingenium/FastAPI-Backend-Template/actions/workflows/ci-backend.yaml">
-  <img src="https://github.com/Aeternalis-Ingenium/FastAPI-Backend-Template/actions/workflows/ci-backend.yaml/badge.svg"/> 
- </a>
-
- <a href="https://codecov.io/gh/Aeternalis-Ingenium/FastAPI-Backend-Template">
-  <img src="https://codecov.io/gh/Aeternalis-Ingenium/FastAPI-Backend-Template/branch/trunk/graph/badge.svg?token=1hiVayuLRl"/> 
- </a>
-
- <a href="https://github.com/pre-commit/pre-commit">
-  <img src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit" alt="pre-commit" style="max-width:100%;">
- </a>
-
- <a href="https://github.com/psf/black">
-  <img src="https://img.shields.io/badge/code%20style-black-000000.svg">
- </a>
-
- <a href="https://pycqa.github.io/isort/">
-  <img src="https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336">
- </a>
-
- <a href="http://www.mypy-lang.org/static/mypy_badge.svg">
-  <img src="https://camo.githubusercontent.com/59eab954a267c6e9ff1d80e8055de43a0ad771f5e1f3779aef99d111f20bee40/687474703a2f2f7777772e6d7970792d6c616e672e6f72672f7374617469632f6d7970795f62616467652e737667" alt="check with mypy" style="max-width:100%;">
- </a>
-</div>
+<h1 align=center><strong>Basic FastAPI CRUD application for scraping and using data from Semantic Scholar.</strong></h1>
 
 <br>
 
-This is a template repository aimed to kick-start your project with a setup from a real-world application! This template utilizes the following tech stack:
+This repository is a structure from a real-world application and the one I used to work on in RUNIT. This application performs basic CRUD operations over users and harvested data(authors and papers/articles) from Semantic Scholar website stored in a PostgreSQL database. The application is built with [FastAPI](https://fastapi.tiangolo.com/) and [Docker](https://www.docker.com/).
 
+This template utilizes the following tech stacks:
+
+* 🎓👩🏻‍🎓📖✍🏻 [Semantic Scholar](https://semanticscholar.org) - [Semanitc Scholar API (overview)](https://api.semanticscholar.org) -> [Documentation](https://api.semanticscholar.org/api-docs/)
 * 🐳 [Dockerized](https://www.docker.com/)
 * 🐘 [Asynchronous PostgreSQL](https://www.postgresql.org/docs/current/libpq-async.html)
 * 🐍 [FastAPI](https://fastapi.tiangolo.com/)
@@ -220,6 +197,8 @@ backend/
             ├── session.py
             ├──repository.py
         ├── routes/                     # Endpoints
+            ├── author.py               # Author routes
+            ├── paper.py                # Paper routes
             ├── account.py              # Account routes
             ├── authentication.py       # Signup and Signin routes
         ├── endpoints.py                # Endpoint registration
@@ -235,12 +214,18 @@ backend/
     ├── models/
         ├── db/
             ├── account.py              # Account class for database entity
+            |── author.py               # Author class for database entity  
+            |── paper.py                # Paper class for database entity
         ├── schemas/
             ├── account.py              # Account classes for data validation objects
+            |── author.py               # Author classes for data validation objects
+            |── paper.py                # Paper classes for data validation objects
             ├── base.py                 # Base class for data validation objects
     ├── repository/
         ├── crud/
             ├── account.py              # C. R. U. D. operations for Account entity
+            ├── author.py               # C. R. U. D. operations for Author entity
+            ├── paper.py                # C. R. U. D. operations for Paper entity
             ├── base.py                 # Base class for C. R. U. D. operations
         ├── migrations/
             ├── versions/
@@ -249,6 +234,7 @@ backend/
         ├── base.py                     # Entry point for alembic automigration
         ├── database.py                 # Database class with engine and session
         ├── events.py                   # Registration of database events
+        |── harvester.py                # Harvester class for using Semantic Scholar API   
         ├── table.py                    # Custom SQLAlchemy Base class
     ├── security/
         ├── hashing/
